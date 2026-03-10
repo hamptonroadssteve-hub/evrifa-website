@@ -1,3 +1,72 @@
+// EVRIFA COMPLETE WEBSITE STARTER
+// DOWNLOADABLE PROJECT STRUCTURE
+
+/*
+Create these files in your GitHub repo (or download as a ZIP if exported):
+
+EVRIFA-WEBSITE
+
+package.json
+next.config.js
+
+/pages
+   index.js
+
+/public
+   logo.png
+
+/styles
+   globals.css
+
+*/
+
+// ---------------- PACKAGE.JSON ----------------
+
+/*
+{
+  "name": "evrifa-website",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
+  },
+  "dependencies": {
+    "next": "14.2.3",
+    "react": "18.2.0",
+    "react-dom": "18.2.0"
+  }
+}
+*/
+
+// ---------------- NEXT CONFIG ----------------
+
+/*
+module.exports = {
+  reactStrictMode: true
+}
+*/
+
+// ---------------- GLOBAL CSS ----------------
+
+/*
+body {
+  margin:0;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+  background:#eef2f7;
+}
+
+h1,h2,h3{
+  margin:0;
+}
+
+.container{
+  max-width:1200px;
+  margin:auto;
+}
+*/
+
+// ---------------- HOMEPAGE ----------------
 
 // EVRIFA COMPLETE WEBSITE STARTER
 // Stack: Next.js + Tailwind + Sanity CMS (editable) + Vercel hosting
@@ -489,3 +558,4 @@ CMS: free
 Domain: already owned
 
 */
+
