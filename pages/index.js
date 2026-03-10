@@ -1,561 +1,284 @@
-// EVRIFA COMPLETE WEBSITE STARTER
-// DOWNLOADABLE PROJECT STRUCTURE
-
-/*
-Create these files in your GitHub repo (or download as a ZIP if exported):
-
-EVRIFA-WEBSITE
-
-package.json
-next.config.js
-
-/pages
-   index.js
-
-/public
-   logo.png
-
-/styles
-   globals.css
-
-*/
-
-// ---------------- PACKAGE.JSON ----------------
-
-/*
-{
-  "name": "evrifa-website",
-  "private": true,
-  "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start"
-  },
-  "dependencies": {
-    "next": "14.2.3",
-    "react": "18.2.0",
-    "react-dom": "18.2.0"
-  }
-}
-*/
-
-// ---------------- NEXT CONFIG ----------------
-
-/*
-module.exports = {
-  reactStrictMode: true
-}
-*/
-
-// ---------------- GLOBAL CSS ----------------
-
-/*
-body {
-  margin:0;
-  font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
-  background:#eef2f7;
-}
-
-h1,h2,h3{
-  margin:0;
-}
-
-.container{
-  max-width:1200px;
-  margin:auto;
-}
-*/
-
-// ---------------- HOMEPAGE ----------------
-
-// EVRIFA COMPLETE WEBSITE STARTER
-// Stack: Next.js + Tailwind + Sanity CMS (editable) + Vercel hosting
-// Estimated hosting cost: $0–$20/month
-// CMS cost: free
-// This file represents the main layout + homepage and the structure
-// for all site pages.
-
-// -------------------------------------------------
-// SITE STRUCTURE
-// -------------------------------------------------
-
-/*
-Pages included in this starter:
-
-/ (Homepage)
-/about
-/sites
-/sites/[site]
-/governance
-/documents
-/news
-/news/[post]
-/the-common-ground
-/the-common-ground/[post]
-/contact
-
-Content to transfer from the current Squarespace site:
-
-Homepage mission/overview content
-About
-Schedule / Meetings
-Agendas and Minutes archive
-Board of Directors
-Documents library
-Kings Creek Commerce Center
-Contact page and staff details
-Member Localities logos/content
-Existing PDFs, budgets, audits, annual reports, and linked governance files
-
-Recommended migration structure in the new CMS:
-
-Homepage
-About Page
-Meetings Archive
-Board Directory
-Document Library
-Kings Creek Commerce Center Page
-Contact Page
-Common Ground Archive
-
-Editable content will come from the CMS.
-
-CMS collections:
-
-Sites
-Documents
-News
-Common Ground Articles
-Board Members
-Meetings
-Pages
-Member Localities
-
-Migration note:
-
-All existing public pages, text, files, PDFs, meeting records, board information, and contact details from the current site should be imported into the CMS before launch so nothing is lost.
-
-*/
-
-// -------------------------------------------------
-// SHARED COMPONENTS
-// -------------------------------------------------
-
 function Header({ nav }) {
   return (
-    <header className="bg-white border-b">
-      <div className="max-w-7xl mx-auto flex items-center justify-between px-6 py-5">
-
-        <div className="flex items-center gap-4">
-          <img src="/logo.png" className="h-10" />
-
+    <header className="site-header">
+      <div className="wrap header-inner">
+        <a href="/" className="brand">
+          <img src="/logo.png" alt="EVRIFA logo" className="brand-logo" />
           <div>
-            <div className="text-xs font-semibold tracking-[0.25em] text-[#1f57a4]">EVRIFA</div>
-            <div className="text-sm text-slate-600">Eastern Virginia Regional Industrial Facility Authority</div>
+            <div className="brand-kicker">EVRIFA</div>
+            <div className="brand-name">Eastern Virginia Regional Industrial Facility Authority</div>
           </div>
-        </div>
+        </a>
 
-        <nav className="hidden md:flex gap-7 text-sm">
+        <nav className="main-nav" aria-label="Primary navigation">
           {nav.map((item) => (
-            <a key={item.label} href={item.link} className="hover:text-[#1f57a4]">
+            <a key={item.label} href={item.link} className="nav-link">
               {item.label}
             </a>
           ))}
         </nav>
 
-        <a href="/contact" className="bg-[#1f57a4] text-white px-4 py-2 rounded-full text-sm">
-          Start a Project
-        </a>
-
+        <a href="/contact" className="button button-primary header-cta">Start a Project</a>
       </div>
     </header>
-  );
+  )
 }
-
 
 function Footer() {
   return (
-    <footer className="bg-slate-900 text-white mt-20">
-
-      <div className="max-w-7xl mx-auto px-6 py-16 grid md:grid-cols-3 gap-10">
-
+    <footer className="site-footer">
+      <div className="wrap footer-grid">
         <div>
-          <img src="/logo.png" className="h-10 mb-4" />
-          <p className="text-white/70 text-sm">
+          <img src="/logo.png" alt="EVRIFA logo" className="footer-logo" />
+          <p className="footer-text">
             The Eastern Virginia Regional Industrial Facility Authority works with regional partners to develop industrial sites and attract investment.
           </p>
         </div>
 
         <div>
-          <h3 className="font-semibold mb-4">Navigation</h3>
-
-          <div className="space-y-2 text-sm text-white/70">
+          <h3 className="footer-title">Navigation</h3>
+          <div className="footer-links">
             <a href="/about">About</a>
             <a href="/sites">Industrial Sites</a>
             <a href="/governance">Governance</a>
             <a href="/documents">Documents</a>
             <a href="/news">News</a>
             <a href="/the-common-ground">The Common Ground</a>
+            <a href="/contact">Contact</a>
           </div>
         </div>
 
         <div>
-          <h3 className="font-semibold mb-4">Contact</h3>
-
-          <p className="text-sm text-white/70">
-            Eastern Virginia Regional Industrial Facility Authority
-          </p>
-
-          <a href="/contact" className="inline-block mt-4 bg-white text-[#1f57a4] px-4 py-2 rounded-full">
-            Contact EVRIFA
-          </a>
+          <h3 className="footer-title">Contact</h3>
+          <p className="footer-text">Eastern Virginia Regional Industrial Facility Authority</p>
+          <a href="/contact" className="button button-light footer-button">Contact EVRIFA</a>
         </div>
-
       </div>
-
     </footer>
-  );
+  )
 }
 
-
-// -------------------------------------------------
-// HOMEPAGE
-// -------------------------------------------------
-
-export default function Home() {
-
-  const nav = [
-    { label: "About", link: "/about" },
-    { label: "Sites", link: "/sites" },
-    { label: "Governance", link: "/governance" },
-    { label: "Documents", link: "/documents" },
-    { label: "News", link: "/news" },
-    { label: "The Common Ground", link: "/the-common-ground" },
-    { label: "Contact", link: "/contact" },
-  ];
-
-  const stats = [
-    { value: "5", label: "Industrial Sites" },
-    { value: "6", label: "Member Localities" },
-    { value: "24/7", label: "Project Support" },
-    { value: "100%", label: "Transparency" },
-  ];
-
+function StatCard({ value, label }) {
   return (
-
-    <div className="bg-[#eef2f7] min-h-screen">
-
-      <Header nav={nav} />
-
-      {/* HERO */}
-
-      <section className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 px-6 py-20">
-
-        <div>
-
-          <div className="uppercase text-xs tracking-widest text-[#1f57a4] font-semibold">
-            Regional Economic Development
-          </div>
-
-          <h1 className="text-5xl font-black mt-3 leading-tight">
-            Industrial development in Eastern Virginia.
-          </h1>
-
-          <p className="mt-6 text-lg text-slate-600">
-            EVRIFA partners with regional localities to develop strategic industrial sites and support major investment across Eastern Virginia.
-          </p>
-
-          <div className="flex gap-4 mt-8">
-
-            <a href="/sites" className="bg-[#1f57a4] text-white px-6 py-3 rounded-full">
-              Explore Industrial Sites
-            </a>
-
-            <a href="/governance" className="border border-slate-300 px-6 py-3 rounded-full">
-              Governance
-            </a>
-
-          </div>
-
-          {/* STATS */}
-
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-12">
-
-            {stats.map((stat) => (
-
-              <div key={stat.label} className="bg-white rounded-2xl p-4 shadow">
-
-                <div className="text-3xl font-bold text-[#1f57a4]">
-                  {stat.value}
-                </div>
-
-                <div className="text-sm text-slate-600">
-                  {stat.label}
-                </div>
-
-              </div>
-
-            ))}
-
-          </div>
-
-        </div>
-
-
-        <div className="rounded-3xl bg-gradient-to-br from-[#1f57a4] to-[#2f83c5] text-white p-8">
-
-          <div className="uppercase text-xs tracking-widest text-white/70">
-            Featured Development Site
-          </div>
-
-          <h2 className="text-3xl font-bold mt-3">
-            Franklin Industrial Megasite
-          </h2>
-
-          <p className="mt-4 text-white/80">
-            Strategic industrial megasite with rail, highway access, and utility capacity for advanced manufacturing investment.
-          </p>
-
-        </div>
-
-      </section>
-
-
-      {/* FEATURE MODULES */}
-
-      <section className="max-w-7xl mx-auto px-6 py-16 grid md:grid-cols-2 gap-6">
-
-        {[
-          {
-            title: "Industrial Sites",
-            text: "Explore EVRIFA's portfolio of industrial development sites.",
-            link: "/sites"
-          },
-
-          {
-            title: "Governance Center",
-            text: "Board members, meetings, policies, and public records.",
-            link: "/governance"
-          },
-
-          {
-            title: "Public Documents",
-            text: "Access procurement, reports, bylaws, and official notices.",
-            link: "/documents"
-          },
-
-          {
-            title: "News & Announcements",
-            text: "Updates and announcements from EVRIFA.",
-            link: "/news"
-          },
-
-          {
-            title: "The Common Ground",
-            text: "A dedicated newsletter archive where each newsletter article is saved as an individual, searchable post.",
-            link: "/the-common-ground"
-          }
-
-        ].map((card) => (
-
-          <a key={card.title} href={card.link} className="bg-white rounded-3xl p-8 shadow hover:shadow-xl transition">
-
-            <h3 className="text-2xl font-bold">{card.title}</h3>
-
-            <p className="mt-3 text-slate-600">{card.text}</p>
-
-          </a>
-
-        ))}
-
-      </section>
-
-
-      {/* CTA */}
-
-      <section className="max-w-7xl mx-auto px-6 pb-20">
-
-        <div className="bg-gradient-to-r from-[#1f57a4] to-[#2f83c5] rounded-3xl p-12 text-white">
-
-          <h2 className="text-4xl font-bold">
-            Start an Industrial Development Conversation
-          </h2>
-
-          <p className="mt-4 text-white/80">
-            Contact EVRIFA to discuss regional development opportunities.
-          </p>
-
-          <a href="/contact" className="inline-block mt-6 bg-white text-[#1f57a4] px-6 py-3 rounded-full">
-            Contact EVRIFA
-          </a>
-
-        </div>
-
-      </section>
-
-
-      <Footer />
-
+    <div className="stat-card">
+      <div className="stat-value">{value}</div>
+      <div className="stat-label">{label}</div>
     </div>
-  );
+  )
 }
 
+function FeatureCard({ title, text, link }) {
+  return (
+    <a href={link} className="feature-card">
+      <h3>{title}</h3>
+      <p>{text}</p>
+    </a>
+  )
+}
 
-// -------------------------------------------------
-// CMS CONTENT TYPES (SANITY)
-// -------------------------------------------------
+const styles = `
+:root {
+  --blue: #1f57a4;
+  --blue-2: #2f83c5;
+  --gold: #f2b632;
+  --ink: #132033;
+  --muted: #5f6f82;
+  --bg: #eef2f7;
+  --card: #ffffff;
+  --border: #d7e0ea;
+  --footer: #0f1b2f;
+}
 
-/*
+* {
+  box-sizing: border-box;
+}
 
-SITE
+html {
+  scroll-behavior: smooth;
+}
 
-Title
-Slug
-Description
-Acreage
-County
-Utilities
-Rail Access
-Images
-Documents
+body {
+  margin: 0;
+  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+}
 
-DOCUMENT
+a {
+  color: inherit;
+  text-decoration: none;
+}
 
-Title
-Category
-File
-Date
+img {
+  max-width: 100%;
+  display: block;
+}
 
-NEWS
+.page-shell {
+  min-height: 100vh;
+}
 
-Title
-Body
-Date
-Featured Image
+.wrap {
+  width: min(1180px, calc(100% - 40px));
+  margin: 0 auto;
+}
 
-PAGE
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: rgba(255,255,255,0.92);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--border);
+}
 
-Title
-Slug
-Hero Title
-Hero Intro
-Body Sections
-Featured Links
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  min-height: 82px;
+}
 
-MEMBER LOCALITY
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  min-width: 0;
+}
 
-Name
-Logo
-Description
-Website URL
+.brand-logo,
+.footer-logo {
+  height: 42px;
+  width: auto;
+}
 
-BOARD MEMBER
+.brand-kicker {
+  font-size: 11px;
+  letter-spacing: 0.24em;
+  font-weight: 800;
+  color: var(--blue);
+}
 
-Name
-Role
-Photo
-Bio
+.brand-name {
+  font-size: 14px;
+  color: var(--muted);
+  line-height: 1.3;
+}
 
-MEETING
+.main-nav {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
 
-Title
-Meeting Type
-Date
-Time
-Location
-Agenda File
-Minutes File
-Packet File
-Related Documents
+.nav-link {
+  font-size: 15px;
+  color: #314257;
+}
 
-COMMON GROUND ARTICLE
+.nav-link:hover {
+  color: var(--blue);
+}
 
-Title
-Slug
-Publish Date
-Author
-Excerpt
-Body
-Featured Image
-Category
-Related Files
-Newsletter Issue
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  padding: 13px 22px;
+  font-weight: 700;
+  transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
+}
 
-Each Common Ground article should publish as its own post page so newsletters become a long-term searchable archive instead of a single PDF dump.
+.button:hover {
+  transform: translateY(-1px);
+}
 
-*/
+.button-primary {
+  background: var(--blue);
+  color: #fff;
+  box-shadow: 0 10px 24px rgba(31, 87, 164, 0.18);
+}
 
+.button-secondary {
+  background: #fff;
+  color: var(--ink);
+  border: 1px solid var(--border);
+}
 
-// -------------------------------------------------
-// DEPLOYMENT (VERY SIMPLE)
-// -------------------------------------------------
+.button-light {
+  background: #fff;
+  color: var(--blue);
+}
 
-/*
+.header-cta {
+  white-space: nowrap;
+}
 
-1. Create GitHub account
+.hero-section {
+  padding: 72px 0 36px;
+  background:
+    radial-gradient(circle at 0% 0%, rgba(242,182,50,0.22), transparent 30%),
+    radial-gradient(circle at 100% 10%, rgba(47,131,197,0.14), transparent 25%),
+    linear-gradient(180deg, #f8fbfe 0%, var(--bg) 100%);
+}
 
-2. Upload this project
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.08fr 0.92fr;
+  gap: 38px;
+  align-items: stretch;
+}
 
-3. Go to vercel.com
+.eyebrow {
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--blue);
+}
 
-4. Click "Import Project"
+.eyebrow-light {
+  color: #dfe8ff;
+}
 
-5. Select repository
+.hero-copy h1 {
+  margin: 12px 0 0;
+  font-size: clamp(42px, 6vw, 72px);
+  line-height: 0.98;
+  letter-spacing: -0.04em;
+}
 
-6. Deploy
+.hero-text {
+  margin: 24px 0 0;
+  max-width: 640px;
+  font-size: 20px;
+  line-height: 1.7;
+  color: var(--muted);
+}
 
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 30px;
+}
 
-DOMAIN
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+  margin-top: 36px;
+}
 
-Squarespace → Domain Settings
+.stat-card {
+  background: rgba(255,255,255,0.88);
+  border: 1px solid rgba(255,255,255,0.8);
+  border-radius: 24px;
+  padding: 22px 18px;
+  box-shadow: 0 14px 34px rgba(21, 39, 66, 0.08);
+}
 
-Change DNS → point to Vercel
-
-
-EDIT CONTENT
-
-Login to CMS dashboard
-
-Add or update:
-
-Sites
-Documents
-News
-Common Ground Articles
-Board Members
-Meetings
-Member Localities
-
-MIGRATION CHECKLIST
-
-1. Export/copy homepage, about, meetings, agendas/minutes, board, documents, Kings Creek Commerce Center, and contact content
-2. Download every linked PDF and governance file from the current site
-3. Import board members and executive committee information
-4. Import meeting schedule history and future meetings
-5. Import agendas, minutes, packets, budgets, audits, annual reports, and financial statements
-6. Import contact information and member localities
-7. Rebuild Kings Creek Commerce Center as a proper editable site page
-8. Create The Common Ground archive and load each article as an individual post
-9. Confirm every old URL has a matching new page or a redirect
-10. QA every public page before switching DNS from Squarespace
-
-LAUNCH PACKAGE YOU NEED
-
-1. Logo files
-2. Current PDFs and governance files
-3. Photos of sites / regional imagery
-4. Staff-approved copy for homepage and about page
-5. First batch of Common Ground articles
-6. Access to Squarespace domain settings for DNS change
-7. GitHub account
-8. Vercel account
-9. Sanity account
-
-TOTAL MONTHLY COST
-
-Hosting: $0–20
-CMS: free
-Domain: already owned
-
-*/
-
+.stat-value {
+  font-size:
